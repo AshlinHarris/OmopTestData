@@ -15,7 +15,7 @@ function main()
 		table_name = match.captures |> first |> String
 		DBInterface.execute(con, "COPY $table_name FROM 'assets/omop-mimic-iv/1_omop_data_csv/$table_name.csv';")
 	end
-	#DBInterface.execute(con, """EXPORT DATABASE 'Outfiles' (FORMAT CSV, DELIMITER '|');""")
+	DBInterface.execute(con, """EXPORT DATABASE 'Outfiles' (FORMAT CSV, DELIMITER '|');""")
 end
 
 end # module OmopTestData
