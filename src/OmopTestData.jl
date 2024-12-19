@@ -12,10 +12,12 @@ function main()
 			"integer" => "BIGINT",
 		)
 		DBInterface.execute(con, command)
-		table_name = match.captures |> first |> String
-		DBInterface.execute(con, "COPY $table_name FROM 'assets/omop-mimic-iv/1_omop_data_csv/$table_name.csv';")
+		table_name = match.captures |> first |> String |> uppercase
+		DBInterface.execute(con, "COPY $table_name FROM 'assets/data/Synthea27Nj_5.4/$table_name.csv';")
 	end
 	DBInterface.execute(con, """EXPORT DATABASE 'Outfiles' (FORMAT CSV, DELIMITER '|');""")
 end
+
+main()
 
 end # module OmopTestData
