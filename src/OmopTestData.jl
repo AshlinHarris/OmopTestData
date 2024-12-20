@@ -30,8 +30,8 @@ function main()
 		DBInterface.execute(con, "COPY out_db.$table_name FROM 'assets/data/Synthea27Nj_5.4/$table_name.csv';")
 	end
 
-	# Compress to a tarball (
-	run(`tar czf $(database_outfile).tar.gz $database_outfile`)
+	# Compress to a tarball (I've been doing this manually)
+	#run(`tar czf $(database_outfile).tar.gz $database_outfile`)
 end
 
 main()
