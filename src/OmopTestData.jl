@@ -9,7 +9,6 @@ function main()
 
 	# Create a database output file
 	database_outfile = "out/synthea_omop_test.db"
-	rm(database_outfile, force=true)
 	DBInterface.execute(con, """ ATTACH '$(database_outfile)' AS out_db; """)
 
 	# Parse the ddl into individual commands
@@ -28,6 +27,9 @@ function main()
 		table_name = match.captures |> first |> String |> uppercase
 		DBInterface.execute(con, "COPY out_db.$table_name FROM 'assets/data/Synthea27Nj_5.4/$table_name.csv';")
 	end
+
+	# Compress to a tarball (
+	run(`tar cf $(database_outfile).tar $database_outfile`)
 end
 
 main()
