@@ -8,7 +8,9 @@ function main()
 	con = DBInterface.connect(DuckDB.DB, ":memory:")
 
 	# Create a database output file
+	#TODO: could do a better job managing directories and cleaning old files
 	database_outfile = "out/synthea_omop_test.db"
+	rm(database_outfile, force = true)
 	DBInterface.execute(con, """ ATTACH '$(database_outfile)' AS out_db; """)
 
 	# Parse the ddl into individual commands
@@ -29,7 +31,7 @@ function main()
 	end
 
 	# Compress to a tarball (
-	run(`tar cf $(database_outfile).tar $database_outfile`)
+	run(`tar czf $(database_outfile).tar.gz $database_outfile`)
 end
 
 main()
