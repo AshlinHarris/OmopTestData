@@ -33,7 +33,7 @@ function main()
 	# Compress to a tarball (I've been doing this manually)
 	# Read and write permissions also need to be added
 	# chmod 666 synthea_omop_test.db
-	# tar -cvf synthea_omop_test.db.tar.gz synthea_omop_test.db
+	# tar -czvf synthea_omop_test.db.tar.gz synthea_omop_test.db
 	#run(`tar czf $(database_outfile).tar.gz $database_outfile`)
 end
 
