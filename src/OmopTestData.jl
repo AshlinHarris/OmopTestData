@@ -30,14 +30,6 @@ function main()
 		DBInterface.execute(con, "COPY out_db.$table_name FROM 'assets/data/Synthea27Nj_5.4/$table_name.csv';")
 	end
 
-	# (It looks like any permission errors are due to Julia...)
-	#
-	# Compress to a tarball (I've been doing this manually)
-	# Read and write permissions also need to be added
-	# chmod 666 synthea_omop_test.db
-	# tar -czvf synthea_omop_test.db.tar.gz synthea_omop_test.db
-	# chmod 666 synthea_omop_test.db.tar.gz
-	#run(`tar czf $(database_outfile).tar.gz $database_outfile`)
 end
 
 main()
